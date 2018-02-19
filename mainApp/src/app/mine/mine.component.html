@@ -1,0 +1,10 @@
+<div id="wrapper">
+  <h1>Mine ShintoCoins</h1>
+  <p>Here you can mine ShintoCoins by being the first to solve the algorithm:<br>
+    What is the 7th Fibonacci sequence number?
+  </p>
+  <form (submit)="onSubmit()"> 
+    <input type="text" name='number' [(ngModel)]='number' placeholder="Number"/>
+    <input type="submit" value="Mine"/>
+  </form> 
+</div>
