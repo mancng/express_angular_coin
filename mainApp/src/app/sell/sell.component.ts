@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-sell',
@@ -15,7 +16,7 @@ export class SellComponent implements OnInit {
   balance: number;
   amount: number;
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.getCoinBlanaceFromService();
@@ -42,6 +43,7 @@ export class SellComponent implements OnInit {
       this._httpService.addToTransactionArr(this.transactionObject);
       this.number = 0;
     } else {
+      this.messageService.add('You do not have enough coins to sell.')
       console.log(" I don't have enough to sell")
     }
   

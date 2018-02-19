@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MessageService } from './message.service';
 
 @Injectable()
 export class HttpService {
@@ -9,7 +10,7 @@ export class HttpService {
   idNum: number =  this.transactions.length;
   singleTransaction: any = {};
 
-  constructor(private _http: HttpClient) { };
+  constructor(private _http: HttpClient, private messageService: MessageService) { };
 
   getIdNumber(){
     return this.idNum;
@@ -30,6 +31,7 @@ export class HttpService {
     transactionObj.id = newIdNum
     this.transactions.push(transactionObj)
     this.earnedCoin.coinBalance = transactionObj.balance
+    this.messageService.add('Transaction Completed!')
     return {message: "savedProperly"}
   }
 

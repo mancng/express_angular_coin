@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-mine',
@@ -14,7 +15,7 @@ export class MineComponent implements OnInit {
   transactionObject: any = {};
   balance: number;
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.getIdFromService()
@@ -45,6 +46,7 @@ export class MineComponent implements OnInit {
       }
       this._httpService.addToTransactionArr(this.transactionObject);
     } else {
+        this.messageService.add('Please try again')
         console.log("Try again");
         this.number = 0;
     }    

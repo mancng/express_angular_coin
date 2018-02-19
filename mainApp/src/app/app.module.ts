@@ -13,6 +13,8 @@ import { LedgerComponent } from './ledger/ledger.component';
 import { MineComponent } from './mine/mine.component';
 import { SellComponent } from './sell/sell.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { TransactionComponent } from './transaction/transaction.component';
     LedgerComponent,
     MineComponent,
     SellComponent,
-    TransactionComponent
+    TransactionComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
